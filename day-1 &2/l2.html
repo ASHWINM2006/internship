@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #btn{
+            width: 10px;height: 10px;
+        } */
+    </style>
+</head>
+<body>
+    <h1 id="h1value">110</h1>
+    <input type="number">
+    <input type="number">
+    <input type="number">
+    <input type="number">
+    <button id="btn" onclick="m()">submit</button>
+    <script>
+        function m(){
+        var h=document.getElementById("h1value");
+        const tags=document.getElementsByTagName("input");
+        var a=0;
+        for(i=0;i<tags.length;i++){
+            a=Number(a)+Number(tags[i].value);
+        }
+        a=Number(a)+Number(h.innerHTML);
+        console.log(a);
+        }
+    </script>
+</body>
+</html>

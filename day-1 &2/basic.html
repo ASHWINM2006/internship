@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Array in Table</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">User Data</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>CGPA</th>
+        </tr>
+        <tbody id="table-body"></tbody>
+    </table>
+    <table>
+        <tr>
+            <th>Grade</th>
+        </tr>
+        <tbody id="table-body2"></tbody>
+    </table>
+    <script>
+        const users = [
+            { name: 'xxxxx', email: 'xxx@gmail.com' ,CGPA:8},
+            {name: 'yyyy', email: 'yy@gmail.com' ,CGPA:7},
+            {  name: 'zzzz', email: 'zzz@gmail.com' ,CGPA:9}];
+        const tableBody = document.getElementById('table-body');
+        users.forEach(user => {
+            const row = `<tr>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.CGPA}</td>
+                        </tr>`;
+                tableBody.innerHTML += row;
+            });
+            const tableBody2 = document.getElementById('table-body2');
+            users.forEach(user => {
+                var row;
+                if(user.CGPA>=9){
+                    row=`<tr><td>O</td></tr>`;
+                }
+                else if(user.CGPA>=8 && user.CGPA<9){
+                    row=`<tr><td>A</td></tr>`;
+                }
+                else{
+                    row=`<tr><td>B</td></tr>`;
+                }
+                tableBody2.innerHTML += row;
+            });
+    </script>
+</body>
+</html>
