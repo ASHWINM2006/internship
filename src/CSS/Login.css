@@ -1,65 +1,120 @@
+/* Form Container */
 .form-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f7f7f7;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  .form-container h2 {
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #a30c82;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out; /* Fade-in animation on load */
+}
 
-  form label {
-    text-align: left;
-    font-size: 14px;
-    color: #333;
-    font-weight: bold;
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
   }
-  form input {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
+  100% {
+      opacity: 1;
+      transform: translateY(0);
   }
-  .login-button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  animation: slideIn 0.8s ease-in-out; /* Heading slides in */
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+  0% {
+      opacity: 0;
+      transform: translateX(-30px);
   }
-  
-  .login-button:hover {
-    background-color: #2980b9;
+  100% {
+      opacity: 1;
+      transform: translateX(0);
   }
-  .switch-link {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .switch-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .switch-link a:hover {
-    text-decoration: underline;
-  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Form Labels */
+form label {
+  text-align: left;
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out 0.3s forwards; /* Sequential fade-in effect */
+}
+
+/* Form Inputs */
+form input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #c98686;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+form input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+  transform: scale(1.02); /* Slight zoom-in effect on focus */
+  outline: none;
+}
+
+
+
+/* Link Styling */
+.switch-link {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #400707;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out 0.6s forwards; /* Sequential fade-in effect */
+}
+
+.switch-link a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.switch-link a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+/* Login Button */
+.login-button {
+  background-color: #07a912; /* Blue background */
+  color: white; /* White text */
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: fadeIn 0.8s ease-in-out 0.4s forwards; /* Button fades in with a delay */
+  transform: scale(0.95); /* Initial scale */
+}
+
+.login-button:hover {
+  background-color: #1e88e5; /* Slightly darker blue on hover */
+  box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
+  transform: scale(1.05); /* Button grows slightly on hover */
+}
