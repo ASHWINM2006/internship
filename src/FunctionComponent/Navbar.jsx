@@ -33,6 +33,9 @@ const Navbar = () => {
                                 <li><Link to="/useRef" className="dropdown-link">useRef</Link></li>
                                 <li><Link to="/useMemo" className="dropdown-link">useMemo</Link></li>
                                 <li><Link to="/useCallback" className="dropdown-link">useCallback</Link></li>
+                                <li><Link to="/ReactLifecycle" className="dropdown-link">ReactLifecycle</Link></li>
+                                <li><Link to="/Student" className="dropdown-link">Student</Link></li>
+                                <li><Link to="/Memo" className="dropdown-link">Memo</Link></li>
                             </ul>
                         )}
                     </li>

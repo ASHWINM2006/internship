@@ -7,13 +7,17 @@ import Contact from './FunctionComponent/Contact';
 import Signup from './FunctionComponent/Signup';
 import Gallery from './FunctionComponent/Gallery';
 import Login from './FunctionComponent/Login';
-import UseState from './FunctionComponent/UseState';
-import UseEffect from './FunctionComponent/UseEffect';
-import UseEffectAPI from './FunctionComponent/UseEffectAPI';
-import UseEffectAPIimage from './FunctionComponent/UseEffectAPIimage';
-import UseRef from './FunctionComponent/UseRef';
-import UseMemo from './FunctionComponent/UseMemo';
-import UseCallback from './FunctionComponent/UseCallback';
+import UseState from './FunctionComponent/Hooks/UseState';
+import UseEffect from './FunctionComponent/Hooks/UseEffect';
+import UseEffectAPI from './FunctionComponent/Hooks/UseEffectAPI';
+import UseEffectAPIimage from './FunctionComponent/Hooks/UseEffectAPIimage';
+import UseRef from './FunctionComponent/Hooks/UseRef';
+import UseMemo from './FunctionComponent/Hooks/UseMemo';
+import UseCallback from './FunctionComponent/Hooks/UseCallback';
+import ReactLifecycleMethods from './component/ReactLifecycle';
+import Student from './FunctionComponent/Hooks/Student';
+import Memo from './FunctionComponent/Memorization/Memo';
+
 
 
 
@@ -35,6 +39,9 @@ function App() {
         <Route path="/UseRef" element={<UseRef/>}></Route>
         <Route path="/UseMemo" element={<UseMemo/>}></Route>
         <Route path="/UseCallback" element={<UseCallback/>}></Route>
+        <Route path="/ReactLifecycle" element={<ReactLifecycleMethods/>}></Route>
+        <Route path="/Student" element={<Student/>}></Route>
+        <Route path="/Memo" element={<Memo/>}></Route>
       </Routes>
     </BrowserRouter>
   );
