@@ -25,16 +25,14 @@ const Navbar = () => {
                         <span className="dropdown-title">Hooks</span>
                         {dropdown && (
                             <ul className="dropdown-menu">
-                                <li><Link to="/useState" className="dropdown-link" >useState</Link></li>
-                                <li><Link to="/useEffect" className="dropdown-link" >useEffect</Link></li>
-                                <li><Link to="/useEffectAPI" className="dropdown-link" >useEffectAPI</Link></li>
-                                <li><Link to="/useEffectAPIimage" className="dropdown-link" >useEffectAPIimage</Link></li>
-                                <li><Link to="/useReducer" className="dropdown-link" >useReducer</Link></li>
-                                <li><Link to="/useRef" className="dropdown-link" >useRef</Link></li>
-                                <li><Link to="/useMemo" className="dropdown-link" >UseMemo</Link></li>
-                                <li><Link to="/useCallback" className="dropdown-link">UseCallback</Link></li>
-                               
-
+                                <li><Link to="/useState" className="dropdown-link">useState</Link></li>
+                                <li><Link to="/useEffect" className="dropdown-link">useEffect</Link></li>
+                                <li><Link to="/useEffectAPI" className="dropdown-link">useEffectAPI</Link></li>
+                                <li><Link to="/useEffectAPIimage" className="dropdown-link">useEffectAPIimage</Link></li>
+                                <li><Link to="/useReducer" className="dropdown-link">useReducer</Link></li>
+                                <li><Link to="/useRef" className="dropdown-link">useRef</Link></li>
+                                <li><Link to="/useMemo" className="dropdown-link">useMemo</Link></li>
+                                <li><Link to="/useCallback" className="dropdown-link">useCallback</Link></li>
                             </ul>
                         )}
                     </li>
