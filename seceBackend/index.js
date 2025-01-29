@@ -1,52 +1,70 @@
-const express = require("express");
-const path = require("path");
-const mdb = require("mongoose");
-const dotenv = require("dotenv");
-const Signup = require("./models/signupSchema");
-const e=require("express")
+const express=require('express')
+const path=require('path')
+const mdb=require("mongoose")
+const dotenv=require("dotenv")
+const Signup=require("./models/signupSchema")
+const bcrypt = require('bcrypt');
+const cors = require("cors");
+const app=express()
 dotenv.config();
-const app = express();
-app.use(express.json());
-
-mdb
-  .connect("mongodb+srv://SECEMERN:MERN2025@mern2025.wx54l.mongodb.net/sece")
-  .then(() => {
-    console.log("MongoDB Connection Sucessfull");
-  })
-  .catch((err) => {
-    console.log("MongoDB Connection Unsucessfull", err);
-  });
-
-app.get("/", (req, res) => {
-  res.send(
-    "Welcome to Backend my friend\n Your RollerCoster starts from now on\n Fasten your codabase so you can catchup of what is been taught"
-  );
-});
-app.get("/static", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
-
-app.post("/signup", async (req, res) => {
-  var { firstName, lastName, username, email, password } = req.body;
-  try {
-console.log("Inside try");
-      const newCustomer = new Signup({
-      firstName: firstName,
-      lastName: lastName,
-      username: username,
-      email: email,
-      password: password,
-    });
-    await newCustomer.save();
-    res.status(201).send("Values received");
-  } catch (err) {
-    res.status(400).send("Signup Unsuccessfull",err);
-  }
-});
-app.get('/getsignupdet',async(req,res)=>{
-    var signUpdet=await Signup.find()
-    res.status(200).json(signUpdet)
+app.use(express.urlencoded());
+app.use(cors());
+app.use(express.json())
+mdb.connect(process.env.MONGODB_URL).then(()=>{
+    console.log("connected successfully")
+}).catch((err)=>{
+    console.log("not connected")
 })
-app.listen(3001, () => {
-  console.log("Server Started");
+app.get('/',(req,res)=>{
+    res.send("hi\n fellows");
+})
+app.get('/newPath',(req,res)=>{
+    res.sendFile(path.join(__dirname,"index.html"));
+})
+app.get('/newPath2',(req,res)=>{
+    res.json({"key":"index.html"});
+})
+app.post("/signup", (req,res)=>{
+    const {firstname,lastname,email,password}=req.body;
+    try{
+        const newCustomer=new Signup({
+        firstname:firstname,
+        lastname:lastname,
+        email:email,
+        password:password
+    });
+    newCustomer.save();
+    res.status(201).send("yooo!");
+    console.log("value recived")
+}catch(e){
+    res.status(401).send("yooo!")
+    console.log("unSuccessful")
+}
+})
+app.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await Signup.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const user_password=user.password;
+        if (password!=user_password) {
+            return res.status(401).json({ message: "Invalid password" });
+        }
+        
+        res.status(200).json({ message: "Login successful", user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
 });
+app.post("/update",async(req,res)=>{
+    const user=await Signup.findOneAndUpdate({firstname:"luffy"},{$set:{firstname:"Monkey D Luffy"}});
+    res.json("record updated");
+    user.save();
+});
+app.listen(3001,()=>{
+    console.log("server is started");
+    
+})
